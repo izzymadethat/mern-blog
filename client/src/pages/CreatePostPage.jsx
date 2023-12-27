@@ -9,10 +9,21 @@ const CreatePostPage = () => {
 
   return (
     <form action="">
-      <input type="title" placeholder="Title" />
-      <input type="summary" placeholder="Summary" />
+      <input type="title" 
+        placeholder="Title" 
+        value={title} 
+        onChange={e => setTitle(e.target.value)}
+      />
+      <input type="summary"
+        placeholder="Summary"
+        value={summary}
+        onChange={e => setSummary(e.target.value)}
+      />
       <input type="file" />
-      <ReactQuill value={content} />
+      <ReactQuill
+        value={content}
+        onChange={newValue => setContent(newValue)}
+      />
       <button style={{ marginTop: "5px" }}>Create Post</button>
     </form>
   );
