@@ -1,26 +1,25 @@
-const Post = () => {
+import { formatISO9075 } from "date-fns";
+import { Link } from "react-router-dom";
+
+const Post = ({ _id, title, summary, cover, content, createdAt, author }) => {
   return (
     <div className="post">
       <div className="post-image">
-        <img
-          src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="blog header. a simple home studio setup"
-        />
+        <Link to={`/post/${_id}`}>
+          <img src={"http://localhost:4000/" + cover} alt="" />
+        </Link>
       </div>
       <div className="post-content">
-        <h2>How to build the perfect home studio</h2>
+        <Link to={"/post/id"}>
+          <h2>{title}</h2>
+        </Link>
         <p className="post-info">
           <a href="#author" className="author">
-            Isaiah Vickers
+            {author.username}
           </a>
-          <time>2023-12-26 13:44</time>
+          <time>{formatISO9075(new Date(createdAt))}</time>
         </p>
-        <p className="post-summary">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
-          nihil quaerat ullam, quia eum aspernatur libero! Alias maxime sequi
-          rem aliquid delectus ea? Rerum voluptas illum, ratione quos sed
-          impedit?
-        </p>
+        <p className="post-summary">{summary}</p>
       </div>
     </div>
   );
